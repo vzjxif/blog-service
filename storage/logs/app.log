@@ -1,1 +1,8 @@
 2022/06/17 16:37:25 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1655455045587086188}
+2022/06/20 10:18:56 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1655691536916904990}
+2022/06/20 10:19:03 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"fatal","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1655691543908822544}
+2022/06/20 10:21:08 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1655691668566002047}
+2022/06/20 10:21:15 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"fatal","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1655691675907494818}
+2022/06/20 10:21:35 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1655691695822216616}
+2022/06/20 10:21:39 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1655691699563935820}
+2022/06/20 10:22:09 {"callers":["/home/vzjxif/Documents/code/go/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1655691729240027353}
