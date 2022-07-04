@@ -9,7 +9,7 @@ type Tag struct {
 }
 
 func (t Tag) TableName() string {
-	return "blog_tag "
+	return "blog_tag"
 }
 
 func (t Tag) Count(db *gorm.DB) (int, error) {
@@ -47,8 +47,8 @@ func (t Tag) Create(db *gorm.DB) error {
 	return db.Create(&t).Error
 }
 
-func (t Tag) Update(db *gorm.DB) error {
-	return db.Model(&Tag{}).Where("id = ? AND is_del = ?", t.ID, 0).Update(t).Error
+func (t Tag) Update(db *gorm.DB, valuse interface{}) error {
+	return db.Model(&Tag{}).Where("id = ? AND is_del = ?", t.ID, 0).Update(valuse).Error
 }
 
 func (t Tag) Delete(db *gorm.DB) error {
