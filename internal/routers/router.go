@@ -1,8 +1,12 @@
 package routers
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
+	"github.com/vzjxif/blog-service/global"
 	"github.com/vzjxif/blog-service/internal/middleware"
+	"github.com/vzjxif/blog-service/internal/routers/api"
 	v1 "github.com/vzjxif/blog-service/internal/routers/v1"
 )
 
@@ -11,9 +15,13 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
+	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
 
 	article := v1.NewArticle()
 	tag := v1.NewTag()
+
+	upload := api.NewUpload()
+	r.POST("/upload/file", upload.UploadFile)
 
 	apiv1 := r.Group("/api/v1")
 	{

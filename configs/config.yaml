@@ -9,6 +9,11 @@ App:
   LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
+  UploadImageAllowExts: .jpg,
+  # MB
+  UploadImageMaxSize: 10
+  UploadServerUrl: http://127.0.0.1:8000/static
+  UploadSavePath: storage/uploads
 Database:
   DBType: mysql
   Username: root  
