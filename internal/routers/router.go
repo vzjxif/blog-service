@@ -2,19 +2,35 @@ package routers
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/vzjxif/blog-service/global"
 	"github.com/vzjxif/blog-service/internal/middleware"
 	"github.com/vzjxif/blog-service/internal/routers/api"
 	v1 "github.com/vzjxif/blog-service/internal/routers/v1"
+	"github.com/vzjxif/blog-service/pkg/limiter"
 )
+
+var methodLimiters = limiter.NewMethodLimier().AddBuckets(limiter.LimiterBucketRule{
+	Key:          "/auth",
+	FillInterval: time.Second,
+	Capacity:     10,
+	Quantum:      10,
+})
 
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger())
-	r.Use(gin.Recovery())
+	if global.ServerSetting.RunMode == "debug" {
+		r.Use(gin.Logger())
+		r.Use(gin.Recovery())
+	} else {
+		r.Use(middleware.AccessLog())
+		r.Use(middleware.Recovery())
+	}
 	r.Use(middleware.Translations())
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
 	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
 
 	article := v1.NewArticle()
